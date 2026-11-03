@@ -36,14 +36,13 @@
     document.getElementById("title").textContent = "Login was not completed";
     document.getElementById("msg").textContent = "TikTok returned these details (copy them all):";
     const lines = []; for (const [k, v] of q) lines.push(k + " = " + v);
-    document.getElementById("code").textContent = lines.join("
-");
+    const NL = String.fromCharCode(10);
+    document.getElementById("code").textContent = lines.join(NL);
     document.getElementById("code").style.whiteSpace = "pre-wrap";
     document.getElementById("box").hidden = false;
     document.getElementById("copy").textContent = "Copy details";
     document.getElementById("copy").onclick = async () => {
-      await navigator.clipboard.writeText(lines.join("
-"));
+      await navigator.clipboard.writeText(lines.join(NL));
       document.getElementById("copy").textContent = "Copied!";
     };
   }
